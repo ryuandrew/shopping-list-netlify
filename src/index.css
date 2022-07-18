@@ -1,13 +1,124 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+    font-size: 30px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+    --color-bg-app: #bee3ff;
+    --color-bg-container: #ec645b;
+    --color-bg-input: #fbc1bb;
+    --color-font: aliceblue;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color: var(--color-font);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.app-background {
+    background-color: var(--color-bg-app);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.main-container {
+    background-color: var(--color-bg-container);
+    width: 500px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.35);
+    height: min-content;
+}
+
+.add-item-box {
+    background-color: var(--color-bg-input);
+    border-radius: 10px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.add-item-input {
+    border: none;
+    background-color: transparent;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    color: var(--color-font);
+}
+
+.add-item-button:hover {
+    cursor: pointer;
+}
+
+input::placeholder {
+    color: var(--color-font);
+}
+
+input:focus {
+    outline: transparent;
+}
+
+.item-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px var(--color-bg-input) solid;
+}
+
+.item-name {
+    cursor: pointer;
+}
+
+.item-name svg {
+    margin: auto 5px;
+}
+
+.quantity {
+    background-color: white;
+    color: var(--color-bg-container);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    min-width: 70px;
+    justify-content: space-between;
+    /* font-size: 12px !important; */
+}
+
+.total {
+    padding-top: 20px;
+    float: right;
+    /* text-align: right; */
+}
+
+button {
+    background: transparent;
+    border: none;
+    margin: 3px;
+    color: var(--color-bg-container);
+}
+
+button:focus {
+    outline: 0;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.completed {
+    text-decoration: line-through;
 }
