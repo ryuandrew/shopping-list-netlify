@@ -21,6 +21,7 @@ body {
 .app-background {
     background-color: var(--color-bg-app);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -106,8 +107,8 @@ input:focus {
 .total {
     padding-top: 20px;
     padding-right: 10px;
-    float: right;
-    /* text-align: right; */
+    /* float: right; */
+    text-align: right;
 }
 
 button {
@@ -127,4 +128,22 @@ button:hover {
 
 .completed {
     text-decoration: line-through;
+}
+
+.clearAll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.clearButton {
+    margin: 10px;
+    color: red;
+}
+
+.circleMinus {
+    margin: 0 10px;
 }
