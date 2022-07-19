@@ -31,7 +31,7 @@ function App() {
     // create a state object and initialize it with an empty string
     const [inputValue, setInputValue] = useState("");
 
-    const [totalItemCount, setTotalItemCount] = useState(0);
+    const [setTotalItemCount] = useState(0);
 
     const handleAddButtonClick = () => {
         const newItem = {
