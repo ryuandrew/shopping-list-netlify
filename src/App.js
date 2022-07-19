@@ -1,6 +1,6 @@
 // import "./App.css";
 import "./index.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faCircle,
@@ -12,16 +12,21 @@ import {
     faCircleMinus,
 } from "@fortawesome/free-solid-svg-icons";
 
-function App() {
-    const [items, setItems] = useState([
-        // { itemName: "milk", quantity: 1, isSelected: false },
-        // { itemName: "bananas", quantity: 2, isSelected: true },
-        // { itemName: "yogurt", quantity: 1, isSelected: false },
-    ]);
+const getLocalStorage = () => {
+    let items = localStorage.getItem("items");
+    if (items) {
+        return (items = JSON.parse(localStorage.getItem("items")));
+    } else {
+        return [];
+    }
+};
 
-    // useEffect(() => {
-    //     localStorage.setItem("items", JSON.stringify(items));
-    // }, [items]);
+function App() {
+    const [items, setItems] = useState(getLocalStorage());
+
+    useEffect(() => {
+        localStorage.setItem("items", JSON.stringify(items));
+    }, [items]);
 
     // create a state object and initialize it with an empty string
     const [inputValue, setInputValue] = useState("");
@@ -40,7 +45,7 @@ function App() {
 
         // update the state
         setItems(newItems);
-        totalQuantity();
+        // totalQuantity();
 
         // resets the state
         setInputValue("");
@@ -56,7 +61,7 @@ function App() {
 
         console.log(newItems);
         setItems(newItems);
-        totalQuantity();
+        // totalQuantity();
     };
 
     const handleDecQuantity = (index) => {
@@ -66,7 +71,7 @@ function App() {
         newItems[index].quantity--;
 
         setItems(newItems);
-        totalQuantity();
+        // totalQuantity();
     };
 
     const toggleDone = (index) => {
@@ -79,15 +84,15 @@ function App() {
         setItems(newItems);
     };
 
-    const totalQuantity = () => {
-        // reduce function take a bunch of values from an array and squashes down into one value
-        const totalItemCount = items.reduce((total, item) => {
-            return total + item.quantity;
-        }, 0); // starting value should be 0
+    // const totalQuantity = () => {
+    //     // reduce function take a bunch of values from an array and squashes down into one value
+    //     const totalItemCount = items.reduce((total, item) => {
+    //         return total + item.quantity;
+    //     }, 0); // starting value should be 0
 
-        console.log(totalItemCount);
-        setTotalItemCount(totalItemCount);
-    };
+    //     console.log(totalItemCount);
+    //     setTotalItemCount(totalItemCount);
+    // };
 
     // takes the index of the item to delete and returns a function that calls setItems.
     const handleDeleteItem = (index) => {
@@ -164,7 +169,7 @@ function App() {
                         </div>
                     ))}
                 </div>
-                <div className="total">Total: {totalItemCount}</div>
+                {/* <div className="total">Total: {totalItemCount}</div> */}
                 <div className="clearAll">
                     <button
                         className="clearButton"

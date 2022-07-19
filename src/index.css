@@ -90,7 +90,7 @@ input:focus {
 }
 
 .item-name svg {
-    margin: auto 5px;
+    margin-right: 10px;
 }
 
 .quantity {
