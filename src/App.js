@@ -81,8 +81,10 @@ function App() {
         setTotalItemCount(totalItemCount);
     };
 
+    // takes the index of the item to delete and returns a function that calls setItems.
     const handleDeleteItem = (index) => {
-        alert("delete:" + index);
+        // set items to an array that doesn't include the item in items at index
+        setItems((items) => items.filter((_, i) => i !== index));
     };
 
     return (
@@ -92,7 +94,7 @@ function App() {
                 <div className="add-item-box">
                     <input
                         className="add-item-input"
-                        placeholder="Add Item"
+                        placeholder="Add item"
                         value={inputValue} // take control of the input
                         onChange={(event) => setInputValue(event.target.value)} // update the state anytime the input value changes
                         // react passes in the event to the function and the setInputValue gets called which is the function that changes our state value and passes in the event.target.value
@@ -104,6 +106,7 @@ function App() {
                     />
                 </div>
                 <div className="item-list">
+                    {/* render the items */}
                     {items.map((item, index) => (
                         <div className="item-container">
                             <div
