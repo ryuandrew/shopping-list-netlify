@@ -1,5 +1,5 @@
 * {
-    font-size: 30px;
+    font-size: 15px;
 }
 
 :root {
@@ -29,17 +29,19 @@ body {
 
 .main-container {
     background-color: var(--color-bg-container);
-    width: 500px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.35);
-    height: min-content;
+    /* height: min-content; */
 }
 
 .add-item-box {
     background-color: var(--color-bg-input);
     border-radius: 10px;
-    margin: 20px auto;
+    margin: 20px 0;
     display: flex;
     align-items: center;
     padding: 5px;
@@ -81,12 +83,17 @@ input:focus {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 0;
+    /* flex-wrap: nowrap; */
+    padding: 10px 0;
     border-bottom: 1px var(--color-bg-input) solid;
+    width: 300px;
 }
 
 .item-name {
     cursor: pointer;
+    display: flex;
+    /* flex-wrap: wrap; */
+    /* width: 300px; */
 }
 
 .item-name svg {
