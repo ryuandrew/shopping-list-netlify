@@ -4,9 +4,9 @@
 
 :root {
     --color-bg-app: #bee3ff;
-    --color-bg-container: #ec645b;
-    --color-bg-input: #fbc1bb;
-    --color-font: aliceblue;
+    --color-bg-container: #fff7acfe;
+    --color-bg-input: #ffc090;
+    --color-font: rgb(29, 29, 29);
 }
 
 body {
@@ -45,6 +45,7 @@ body {
 }
 
 .add-item-input {
+    padding-left: 5px;
     border: none;
     background-color: transparent;
     box-sizing: border-box;
@@ -52,6 +53,10 @@ body {
     height: auto;
     border-radius: 10px;
     color: var(--color-font);
+}
+
+.add-item-button {
+    padding-right: 5px;
 }
 
 .add-item-button:hover {
@@ -88,8 +93,8 @@ input:focus {
 }
 
 .quantity {
-    background-color: white;
-    color: var(--color-bg-container);
+    background-color: var(--color-bg-container);
+    color: var(--color-font);
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -100,6 +105,7 @@ input:focus {
 
 .total {
     padding-top: 20px;
+    padding-right: 10px;
     float: right;
     /* text-align: right; */
 }
@@ -108,7 +114,7 @@ button {
     background: transparent;
     border: none;
     margin: 3px;
-    color: var(--color-bg-container);
+    color: var(--color-font);
 }
 
 button:focus {

@@ -8,18 +8,20 @@ import {
     faChevronLeft,
     faChevronRight,
     faPlus,
+    faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
     const [items, setItems] = useState([
-        { itemName: "item 1", quantity: 1, isSelected: false },
-        { itemName: "item 2", quantity: 3, isSelected: true },
-        { itemName: "item 3", quantity: 2, isSelected: false },
-        { itemName: "item 4", quantity: 5, isSelected: true },
+        // { itemName: "item 1", quantity: 1, isSelected: false },
+        // { itemName: "item 2", quantity: 3, isSelected: true },
+        // { itemName: "item 3", quantity: 2, isSelected: false },
     ]);
 
     // create a state object and initialize it with an empty string
     const [inputValue, setInputValue] = useState("");
+
+    const [totalItemCount, setTotalItemCount] = useState(1);
 
     const handleAddButtonClick = () => {
         const newItem = {
@@ -33,16 +35,54 @@ function App() {
 
         // update the state
         setItems(newItems);
+
         // resets the state
         setInputValue("");
     };
 
-    const handleIncQuantity = () => {
-        // const
+    // using index as a parameter so we know which button was clicked
+    const handleIncQuantity = (index) => {
+        // alert("selected: " + index);
+        const newItems = [...items];
+
+        // returns the object at that index and inc the quantity
+        newItems[index].quantity++;
+
+        setItems(newItems);
+        totalQuantity();
     };
 
-    const handleDecQuantity = () => {
-        // const
+    const handleDecQuantity = (index) => {
+        const newItems = [...items];
+
+        // returns the object at that index and inc the quantity
+        newItems[index].quantity--;
+
+        setItems(newItems);
+        totalQuantity();
+    };
+
+    const toggleDone = (index) => {
+        // alert("selected: " + index);
+        const newItems = [...items];
+
+        // toggle the selected item's isSelected to the true/false
+        newItems[index].isSelected = !newItems[index].isSelected;
+
+        setItems(newItems);
+    };
+
+    const totalQuantity = () => {
+        // reduce function take a bunch of values from an array and squashes down into one value
+        const totalItemCount = items.reduce((total, item) => {
+            return total + item.quantity;
+        }, 0); // starting value should be 0
+
+        setTotalItemCount(totalItemCount);
+    };
+
+    const handleDeleteItem = (index) => {
+        alert("delete:" + index);
     };
 
     return (
@@ -66,7 +106,10 @@ function App() {
                 <div className="item-list">
                     {items.map((item, index) => (
                         <div className="item-container">
-                            <div className="item-name">
+                            <div
+                                className="item-name"
+                                onClick={() => toggleDone(index)}
+                            >
                                 {item.isSelected ? (
                                     <>
                                         <FontAwesomeIcon icon={faCheckCircle} />
@@ -85,21 +128,27 @@ function App() {
                                 <button>
                                     <FontAwesomeIcon
                                         icon={faChevronLeft}
-                                        onClick={() => handleDecQuantity()}
+                                        onClick={() => handleDecQuantity(index)}
                                     />
                                 </button>
                                 <span> {item.quantity} </span>
                                 <button>
                                     <FontAwesomeIcon
                                         icon={faChevronRight}
-                                        onClick={() => handleIncQuantity()}
+                                        onClick={() => handleIncQuantity(index)}
+                                    />
+                                </button>
+                                <button>
+                                    <FontAwesomeIcon
+                                        icon={faTrashCan}
+                                        onClick={() => handleDeleteItem(index)}
                                     />
                                 </button>
                             </div>
                         </div>
                     ))}
                 </div>
-                <div className="total">Total: 6</div>
+                <div className="total">Total: {totalItemCount}</div>
             </div>
         </div>
     );
